@@ -1,0 +1,719 @@
+openapi: 3.0.0
+info:
+  title: Shopify-Bliss
+  version: 1.0.0
+servers:
+  - url: https://shopify-blissserver.vercel.app
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: Auth
+  - name: User
+  - name: TypeTemplate
+  - name: Font
+  - name: Section
+  - name: NavbarFeature
+  - name: NavbarLayout
+  - name: Menu
+  - name: SubMenu
+paths:
+  /auth/registration:
+    post:
+      tags:
+        - Auth
+      summary: Registration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: Rezzz
+                email: handa82624@gmail.com
+                password: test12345
+                phoneNumber: "62895379114998"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: handa82624@gmail.com
+                password: test
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/verify-email:
+    post:
+      tags:
+        - Auth
+      summary: Email Verification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: farhan350411@gmail.com
+                code: "335511"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user:
+    put:
+      tags:
+        - User
+      summary: UpdateProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: Rezzz
+                email: handa82624@gmail.com
+                password: test12345
+                phoneNumber: "62895379114998"
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/type-templates:
+    post:
+      tags:
+        - TypeTemplate
+      summary: PostTypeTemplate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                type: Login
+                icon: login
+                nameClass: login
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - TypeTemplate
+      summary: GetAllType
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - TypeTemplate
+      summary: PutTypeTemplate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                type: Contact Page
+                icon: assignment_ind
+                nameClass: contact
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 2bff7888-e861-4341-869b-189af29ad3f8
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - TypeTemplate
+      summary: DeleteType
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 59010f37-c2e3-41d4-bfa5-24c42b25a788
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/type-templates-id:
+    get:
+      tags:
+        - TypeTemplate
+      summary: GetAllTypeID
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 19e82332-2579-4cd8-9f4a-3aced657bce9
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/font:
+    post:
+      tags:
+        - Font
+      summary: PostFont
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: quirky
+                fontClass: font-quirky
+                fontClassReverse: font-sophisticated
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Font
+      summary: GetAllFont
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Font
+      summary: PutFont
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: friendly
+                font_class: font-friendly
+                font_class_reverse: font-friendly-reverse
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 6eb77185-a457-467f-a756-a94f53510964
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Font
+      summary: DeleteFont
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 29a4e401-fa5d-4669-9a89-b8c7d4010b18
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/font-id:
+    get:
+      tags:
+        - Font
+      summary: GetFontID
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 29a4e401-fa5d-4669-9a89-b8c7d4010b18
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/section-templates:
+    post:
+      tags:
+        - Section
+      summary: PostSection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Form section
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Section
+      summary: GetAllSection
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Section
+      summary: PutSection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Form Section
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 34944754-c560-4baf-9c38-315bd540be2b
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Section
+      summary: DeleteSection
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 34944754-c560-4baf-9c38-315bd540be2b
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/section-templates-id:
+    get:
+      tags:
+        - Section
+      summary: GetSectionID
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 798f1ce0-b732-45a6-838e-f28e137243f7
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/navbar-feature:
+    post:
+      tags:
+        - NavbarFeature
+      summary: PostNavbarFeature
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Login
+                icon: account_circle
+                className: login
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - NavbarFeature
+      summary: GetNavbarFeature
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - NavbarFeature
+      summary: PutNavbarFeature
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Test Edit
+                icon: test
+                className: test
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 31502c63-5f24-454b-8d62-2149762ce07e
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - NavbarFeature
+      summary: DeleteNavbarFeature
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 31502c63-5f24-454b-8d62-2149762ce07e
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/navbar-feature-id:
+    get:
+      tags:
+        - NavbarFeature
+      summary: GetIDNavbaFeature
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 776e7c0a-d962-49a9-97e6-1574afe1e822
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/navbar-layout:
+    post:
+      tags:
+        - NavbarLayout
+      summary: PostNavbarLayout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                className: style-4
+                features: all
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - NavbarLayout
+      summary: GetNavbarLayout
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - NavbarLayout
+      summary: PutNavbarLayout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                className: test
+                features: null
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 288010e0-ec68-46a0-98cd-02b9ed6cf5e8
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - NavbarLayout
+      summary: DeleteNavbarLayout
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 288010e0-ec68-46a0-98cd-02b9ed6cf5e8
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/navbar-layout-id:
+    get:
+      tags:
+        - NavbarLayout
+      summary: GetIDNavbaLayout
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 30bf639e-260b-47b4-a2f4-92014c80ab4b
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/menu:
+    post:
+      tags:
+        - Menu
+      summary: PostMenu
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: templates management
+                url: templates management
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Menu
+      summary: GetMenu
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Menu
+      summary: PutMenu
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: test1
+                url: test1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 7492b6a8-3ddc-4ce6-a523-a4cce7c9f9db
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Menu
+      summary: DeleteMenu
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 7492b6a8-3ddc-4ce6-a523-a4cce7c9f9db
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/menu-id:
+    get:
+      tags:
+        - Menu
+      summary: GetMenuID
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 7492b6a8-3ddc-4ce6-a523-a4cce7c9f9db
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sub-menu:
+    post:
+      tags:
+        - SubMenu
+      summary: PostSubMenu
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: nge test
+                menuID: b37d4e96-87b0-4480-805e-562ccd798338
+                defaults: true
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - SubMenu
+      summary: GetSubMenu
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - SubMenu
+      summary: PutSubMenu
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: nge test 2
+                menuID: b37d4e96-87b0-4480-805e-562ccd798338
+                defaults: true
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 24dd6bce-4f99-436b-8caf-d4dfa46a64c2
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - SubMenu
+      summary: DeleteSubMenu
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 24dd6bce-4f99-436b-8caf-d4dfa46a64c2
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sub-menu-id:
+    get:
+      tags:
+        - SubMenu
+      summary: GetSubMenuID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 09e64f50-c6c3-4366-9d31-6d8e16f6a54f
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
